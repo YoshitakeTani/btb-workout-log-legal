@@ -21,14 +21,14 @@
 <body>
   <p class="lang"><a href="privacy-policy-ja.html">日本語</a></p>
   <h1>Privacy Policy</h1>
-  <p class="meta">Last updated: May 30, 2026</p>
+  <p class="meta">Last updated: October 2, 2026</p>
 
   <p>This Privacy Policy describes how BTB Workout Log ("we", "the app") handles your information. We are committed to protecting your privacy.</p>
 
   <h2>1. Information We Collect</h2>
 
   <h3>Account Information</h3>
-  <p>An account is required to use the app. When you create an account, we collect your <strong>email address</strong> and generate a <strong>user ID</strong> for authentication purposes. You can sign up with your email and password, or via Sign in with Apple or Google.</p>
+  <p>On first launch the app automatically creates an anonymous account that needs no email address and generates a <strong>user ID</strong>. If you choose to register an account, we collect your <strong>email address</strong> for authentication purposes. You can sign up with your email and password, or via Sign in with Apple or Google.</p>
 
   <h3>Fitness &amp; Workout Data</h3>
   <p>The app stores workout data you enter, including:</p>
@@ -39,16 +39,20 @@
     <li>Workout notes and tags</li>
     <li>Workout dates and history</li>
   </ul>
-  <p>This data is stored locally on your device and, if you create an account, synced to our cloud servers.</p>
+  <p>This data is stored locally on your device and synced to our cloud servers under your user ID (including while you use an anonymous account).</p>
 
   <h3>Analytics Data</h3>
-  <p>We use Firebase Analytics to collect anonymized usage data such as app opens, screen views, and feature usage (e.g., "workout created", "set added"). This data does <strong>not</strong> include your personal workout details (weights, reps, exercise names) and is used solely to improve the app.</p>
+  <p>We use Firebase Analytics and PostHog to collect usage data such as app opens, screen views, and feature usage (e.g., "workout created", "set added"). This data does <strong>not</strong> include your personal workout details (weights, reps, exercise names) and is used solely to improve the app. After you register an account, usage data is linked to your user ID so we can analyze how features are used (PostHog).</p>
+
+  <h3>Purchase Information</h3>
+  <p>Premium subscriptions are purchased and restored through the Apple / Google stores, and we use RevenueCat to manage subscription status. RevenueCat processes your user ID and purchase history (subscription type, period and status). The app never receives your payment details (such as card numbers).</p>
 
   <h2>2. How We Use Your Information</h2>
   <ul>
     <li>To provide and maintain the app's functionality</li>
-    <li>To sync your workout data across devices (if you have an account)</li>
-    <li>To improve the app based on anonymized usage patterns</li>
+    <li>To sync your workout data across devices and back it up to the cloud</li>
+    <li>To improve the app based on analysis of usage patterns</li>
+    <li>To verify your subscription status</li>
     <li>To authenticate your account and provide support</li>
   </ul>
   <p>We do <strong>not</strong> use your data for advertising, profiling, or automated decision-making.</p>
@@ -59,7 +63,7 @@
   <p>Your workout data is stored locally on your device using SQLite. Authentication tokens are stored in encrypted platform storage (iOS Keychain / Android EncryptedSharedPreferences).</p>
 
   <h3>Cloud Storage</h3>
-  <p>If you create an account, data is synced to <strong>Supabase</strong> servers located in the <strong>United States</strong>. By creating an account, you consent to the transfer of your data to these servers.</p>
+  <p>Data is synced to <strong>Supabase</strong> servers located in the <strong>United States</strong>. By using the app, you consent to the transfer of your data to these servers.</p>
 
   <h3>Encryption</h3>
   <p>All data transmitted between the app and our servers is encrypted using <strong>TLS/HTTPS</strong>. Authentication credentials are encrypted at rest on your device.</p>
@@ -70,9 +74,20 @@
   <table>
     <tr><th>Service</th><th>Purpose</th><th>Data Processed</th></tr>
     <tr><td>Supabase</td><td>Authentication &amp; cloud data sync</td><td>Email, user ID, workout data</td></tr>
-    <tr><td>PowerSync</td><td>Offline-first data synchronization</td><td>Workout data (via Supabase)</td></tr>
-    <tr><td>Firebase Analytics</td><td>Anonymized usage analytics</td><td>Event names, screen views (no personal data)</td></tr>
+    <tr><td>Firebase Analytics</td><td>Usage analytics</td><td>Event names, screen views (no personal data)</td></tr>
+    <tr><td>PostHog (US)</td><td>Usage analytics (feature usage flows)</td><td>Event names, screen views, device and OS information, user ID (registered accounts only)</td></tr>
+    <tr><td>RevenueCat</td><td>Subscription purchase &amp; management</td><td>User ID, purchase history</td></tr>
   </table>
+
+  <h3>Connected AI Assistants (optional)</h3>
+  <p>If you choose to connect an AI assistant (for example ChatGPT or Claude) to BTB, you sign in on our authorization page and approve the specific permissions it requests. Only then can that assistant, acting on your instructions, read and add to your training data through our server.</p>
+  <ul>
+    <li><strong>Data accessed</strong>: exercises, workouts, sets, body parts, muscles and workout types in your account — only what the approved permissions allow. We do not receive your conversation with the assistant.</li>
+    <li><strong>Recipient</strong>: the AI provider you connected receives the data its requests return and handles it under its own privacy policy.</li>
+    <li><strong>What we store</strong>: a hashed access token, a log of each request (time, action, success or failure) for security and troubleshooting, and a history of imports so you can undo them.</li>
+    <li><strong>Deletions are reversible</strong>: a connected assistant cannot permanently delete data; deleted records can be restored.</li>
+    <li><strong>Your controls</strong>: disconnect at any time in the app (Menu &rarr; AI connection) or from the assistant. Tokens, logs and import history are deleted together with your account.</li>
+  </ul>
 
   <h2>5. Your Rights</h2>
   <p>You have the right to:</p>
